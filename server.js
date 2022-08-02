@@ -1,14 +1,14 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
 const userRouter = require("./routes/userRouter");
 const Authanticate = require("./middleware/Authanticate");
+const router = require("./routes/Index");
 
 const app = express();
 app.use(express.json());
 
-app.use("/auth", userRouter);
+app.use(router);
 
 app.get("/", Authanticate, (req, res) => {
   console.log("post", req.post);

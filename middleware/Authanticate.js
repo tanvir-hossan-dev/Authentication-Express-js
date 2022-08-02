@@ -5,13 +5,13 @@ const Authanticate = async (req, res, next) => {
   try {
     let token = req.headers.authorization;
     if (!token) {
-      return res.status(500).json({ Message: "Unauthorazied" });
+      return res.status(500).json({ Message: "token Unauthorazied" });
     }
     const decoded = jwt.verify(token, "tanvir-hossan");
     const post = await Post.findById(decoded._id);
 
     if (!post) {
-      return res.status(500).json({ Message: "Unauthorazied" });
+      return res.status(500).json({ Message: "post Unauthorazied" });
     }
     req.post = post;
     next();

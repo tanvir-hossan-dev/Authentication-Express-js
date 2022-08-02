@@ -26,7 +26,6 @@ const authRegister = async (req, res, next) => {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
     userData.password = hash;
-    userData.confirmPassword = hash;
 
     await userData.save();
     res.status(201).json({ Message: "User created successful", userData });
